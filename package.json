@@ -1,0 +1,29 @@
+{
+  "name": "rpg",
+  "version": "1.0.0",
+  "description": "Criação de um sistema de ficha de rpg online, ao qual vai se possível rodar dados, e verificar status dos jogadores caso seja o mestre",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willieAyanokoji/RPG.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willieAyanokoji/RPG/issues"
+  },
+  "homepage": "https://github.com/willieAyanokoji/RPG#readme",
+  "dependencies": {
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "mongoose": "^6.6.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.23.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
