@@ -8,6 +8,7 @@ const router = express.Router();
 const User= require('./models/User.model');
 const Sessao= require('./models/Sessao.model');
 const SessaoJogadores= require('./models/SessaoJogadores.model');
+const http = require('http-msgs');
 app.use(express.json());
 app.set('views', path.join(__dirname, 'views'));
 
@@ -28,9 +29,10 @@ app.use('/',router);
 app.post("/Cadastrar",async(req,res)=>{
     await User.create(req.body)
     .then(()=>{
-        res.redirect('/index');
+        res.send('/index');       
     }).catch((err)=>{
-        console.log(err);
+       http.send500(req,res,"Dados invalidos");
+
     })
 });
 app.listen(process.env.port || 3000);
