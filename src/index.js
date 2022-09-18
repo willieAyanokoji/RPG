@@ -5,29 +5,33 @@ const db= require('./database/connect');
 dotenv.config();
 const path = require('path');
 const router = express.Router();
-const Jogadores= require('./models/Jogadores.model');
+const User= require('./models/User.model');
 const Sessao= require('./models/Sessao.model');
 const SessaoJogadores= require('./models/SessaoJogadores.model');
 app.use(express.json());
+app.set('views', path.join(__dirname, 'views'));
+
+app.engine('html',require('ejs').renderFile);
+app.set('view engine','html');
+
 router.get('/',function(req,res){
-    res.sendFile(path.join(__dirname+'/index.html'));
+    res.render('index');
+});
+router.get('/index',function(req,res){
+    res.render('index');
+});
+router.get('/registro',function(req,res){
+   res.render('registro');
 });
 
 app.use('/',router);
 app.post("/Cadastrar",async(req,res)=>{
-    await Jogadores.create(req.body)
+    await User.create(req.body)
     .then(()=>{
-        return res.json({
-            erro:false,
-            mensagem:"Jogador cadastrado"
-        })
+        res.redirect('/index');
     }).catch((err)=>{
-        return res.json({
-            erro:true,
-            mensagem:"Erro de criacao"
-        })
+        console.log(err);
     })
-    
 });
 app.listen(process.env.port || 3000);
 

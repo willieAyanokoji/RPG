@@ -19,8 +19,8 @@ const Sessao = db.define('Sessao',{
         type:Sequelize.INTEGER,
         allowNull:false,
         references:{
-            model: 'Jogadores',
-            key: 'id_Jogador'
+            model: 'User',
+            key: 'id_User'
         }
     }
 },{ freezeTableName: true,timestamps: false,} ); 

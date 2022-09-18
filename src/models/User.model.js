@@ -4,8 +4,8 @@ const db = require('../database/connect')
 
 
 
-const Jogadores = db.define('jogadores',{
-    id_Jogador:{
+const User = db.define('User',{
+    id_User:{
         type:Sequelize.INTEGER,
         autoIncrement:true,
         allowNull:false,
@@ -14,10 +14,18 @@ const Jogadores = db.define('jogadores',{
     nome:{
         type:Sequelize.STRING,
         allowNull:false
+    },
+    email:{
+        type:Sequelize.STRING,
+        allowNull:false
+    },
+    senha:{
+        type:Sequelize.STRING,
+        allowNull:false
     }
 },{ freezeTableName: true,timestamps: false,} ); 
-Jogadores.sync();
-module.exports = Jogadores;
+User.sync();
+module.exports = User;
 
 /*database criacao
 create table jogadores(
